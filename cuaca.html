@@ -6,7 +6,6 @@
     <title>CUACA</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        /* Bagian 1: Styling Body dan Container */
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #6dd5fa, #2980b9);
@@ -25,8 +24,6 @@
             text-align: left;
             width: 360px;
         }
-
-        /* Bagian 2: Styling Judul dan Input */
         h1 {
             text-align: center;
             margin-bottom: 20px;
@@ -58,7 +55,6 @@
         button:hover {
             background-color: #2980b9;
         }
-        /* Bagian 3: Styling Tampilan dan Info Cuaca */
         #tampilan {
             font-size: 16px;
             margin-bottom: 15px;
@@ -100,14 +96,12 @@
     </div>
 
     <script>
-        // Bagian 4: Fungsi untuk mengambil data cuaca dari API
         function getCuaca(lokasi) {
-            const url = "http://api.weatherapi.com/v1/current.json?key=5a690ce8dd4743fe8f811005250610&q=${lokasi}&aqi=no";
+            const url = `http://api.weatherapi.com/v1/current.json?key=5a690ce8dd4743fe8f811005250610&q=${lokasi}&aqi=no`;
             $.ajax({
                 url: url,
                 method: 'GET',
                 success: function(data) {
-                    // Update elemen HTML dengan data cuaca yang diterima
                     document.getElementById("negara").textContent = data.location.country || "-";
                     document.getElementById("provinsi").textContent = data.location.region || "-";
                     document.getElementById("kecamatan").textContent = data.location.name || "-";
@@ -135,21 +129,12 @@
             });
         }
 
-        // Bagian 5: Event listener untuk tombol dan input lokasi
         document.getElementById("cari").addEventListener("click", function() {
             const lokasi = document.getElementById("lokasi").value.trim();
             if (lokasi) {
                 getCuaca(lokasi);
             } else {
                 alert("Masukkan lokasi terlebih dahulu.");
-            }
-        });
-
-        // Menambahkan event listener untuk tombol Enter pada input lokasi
-        document.getElementById("lokasi").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                document.getElementById("cari").click();
             }
         });
     </script>
