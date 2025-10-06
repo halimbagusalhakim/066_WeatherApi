@@ -58,3 +58,45 @@
         button:hover {
             background-color: #2980b9;
         }
+        /* Bagian 3: Styling Tampilan dan Info Cuaca */
+        #tampilan {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        #info-cuaca {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+            font-size: 16px;
+        }
+        #info-cuaca p {
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+        #info-cuaca span {
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>CUACA</h1>
+        <input type="text" id="lokasi" placeholder="Masukkan lokasi" />
+        <button id="cari">Cari Cuaca</button>
+        <div id="tampilan">Masukkan lokasi dan klik "Cari Cuaca"</div>
+        <div id="info-cuaca">
+            <p>Negara: <span id="negara"></span></p>
+            <p>Provinsi: <span id="provinsi"></span></p>
+            <p>Kecamatan: <span id="kecamatan"></span></p>
+            <p>Suhu: <span id="suhu"></span></p>
+            <p>Kelembaban: <span id="kelembaban"></span></p>
+            <p>Lokasi: <span id="lokasi-info"></span></p>
+            <p>Latitude: <span id="latitude"></span></p>
+            <p>Longitude: <span id="longitude"></span></p>
+        </div>
+    </div>
+
+    <script>
