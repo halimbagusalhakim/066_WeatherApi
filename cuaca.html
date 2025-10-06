@@ -100,3 +100,37 @@
     </div>
 
     <script>
+        // Bagian 4: Fungsi untuk mengambil data cuaca dari API
+        function getCuaca(lokasi) {
+            const url = "http://api.weatherapi.com/v1/current.json?key=5a690ce8dd4743fe8f811005250610&q=${lokasi}&aqi=no";
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function(data) {
+                    // Update elemen HTML dengan data cuaca yang diterima
+                    document.getElementById("negara").textContent = data.location.country || "-";
+                    document.getElementById("provinsi").textContent = data.location.region || "-";
+                    document.getElementById("kecamatan").textContent = data.location.name || "-";
+                    document.getElementById("suhu").textContent = data.current.temp_c + "°C";
+                    document.getElementById("kelembaban").textContent = data.current.humidity + "%";
+                    document.getElementById("lokasi-info").textContent = data.location.name || "-";
+                    document.getElementById("latitude").textContent = data.location.lat || "-";
+                    document.getElementById("longitude").textContent = data.location.lon || "-";
+                    document.getElementById("tampilan").textContent = "";
+                },
+                error: function(error) {
+                    console.log(error);
+                    const v = document.getElementById("tampilan");
+                    v.innerHTML = "Error: Lokasi tidak ditemukan atau masalah koneksi.";
+                    // Clear info fields on error
+                    document.getElementById("negara").textContent = "-";
+                    document.getElementById("provinsi").textContent = "-";
+                    document.getElementById("kecamatan").textContent = "-";
+                    document.getElementById("suhu").textContent = "-";
+                    document.getElementById("kelembaban").textContent = "-";
+                    document.getElementById("lokasi-info").textContent = "-";
+                    document.getElementById("latitude").textContent = "-";
+                    document.getElementById("longitude").textContent = "-";
+                }
+            });
+        }
