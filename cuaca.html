@@ -134,3 +134,24 @@
                 }
             });
         }
+
+        // Bagian 5: Event listener untuk tombol dan input lokasi
+        document.getElementById("cari").addEventListener("click", function() {
+            const lokasi = document.getElementById("lokasi").value.trim();
+            if (lokasi) {
+                getCuaca(lokasi);
+            } else {
+                alert("Masukkan lokasi terlebih dahulu.");
+            }
+        });
+
+        // Menambahkan event listener untuk tombol Enter pada input lokasi
+        document.getElementById("lokasi").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("cari").click();
+            }
+        });
+    </script>
+</body>
+</html>
